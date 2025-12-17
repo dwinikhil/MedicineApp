@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>ABC Pharmacy - Medicines</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>ABC Pharmacy — Medicines</h1>
+    <div class="controls">
+      <input id="search" placeholder="Search by name..." />
+      <button id="refresh">Refresh</button>
+      <button id="addBtn">Add Medicine</button>
+    </div>
+    <div class="legend">
+      <span class="legend-item"><span class="box red"></span> Expiring &lt; 30 days</span>
+      <span class="legend-item"><span class="box yellow"></span> Low stock (&lt; 10)</span>
+    </div>
+
+    <table id="grid">
+      <thead>
+        <tr><th>Name</th><th>Expiry</th><th>Qty</th><th>Price</th><th>Brand</th><th>Action</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <div id="formModal" class="modal hidden">
+      <div class="modal-content">
+        <h2>Add medicine</h2>
+        <label>Name<input id="m_name"/></label>
+        <div class="field-error" id="err_name"></div>
+        <label>Notes<input id="m_notes"/></label>
+        <div class="field-error" id="err_notes"></div>
+        <label>Expiry<input id="m_expiry" type="date"/></label>
+        <div class="field-error" id="err_expiry"></div>
+        <label>Quantity<input id="m_qty" type="number" min="0"/></label>
+        <div class="field-error" id="err_qty"></div>
+        <label>Price<input id="m_price" step="0.01" type="number" min="0"/></label>
+        <div class="field-error" id="err_price"></div>
+        <label>Brand<input id="m_brand"/></label>
+        <div class="field-error" id="err_brand"></div>
+        <div class="actions">
+          <button id="save">Save</button>
+          <button id="cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+
+body{font-family: Arial, Helvetica, sans-serif; background:#f4f6f8; margin:0; padding:20px;}
+.container{max-width:1000px;margin:0 auto;background:white;padding:20px;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.07);}
+.controls{display:flex;gap:8px;margin-bottom:12px;}
+#search{flex:1;padding:8px;}
+#search{flex:1;padding:8px;}
+table{width:100%;border-collapse:collapse;}
+th,td{padding:8px;border-bottom:1px solid #eee;text-align:left;}
+tr.red{background:#ffefef;}
+tr.yellow{background:#fff9e6;}
+/* ensure cells also pick up the background color (some browsers/style resets) */
+tr.red td{background:#ffdede !important; color:#2c0000}
+tr.yellow td{background:#fff4d6 !important; color:#3a2b00}
+/* legend styles */
+.legend{display:flex;gap:12px;align-items:center;margin-bottom:12px;font-size:14px;color:#333}
+.legend .legend-item{display:flex;align-items:center;gap:6px}
+.legend .box{width:16px;height:12px;display:inline-block;border-radius:3px;border:1px solid rgba(0,0,0,0.08)}
+.legend .box.red{background:#ff6b6b}
+.legend .box.yellow{background:#ffd966}
+.field-error{color:#b00020;font-size:13px;margin:4px 0 8px;min-height:16px}
+button{padding:8px 12px;border:none;border-radius:6px;background:#1976d2;color:white;cursor:pointer;}
+button.secondary{background:#6c757d;}
+.modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.4);}
+.modal.hidden{display:none;}
+.modal-content{background:white;padding:18px;border-radius:8px;width:320px;}
+.modal-content label{display:block;margin-bottom:8px;}
+.modal-content input{width:100%;padding:6px;margin-top:4px;}
+.actions{display:flex;gap:8px;justify-content:flex-end;margin-top:12px;}
