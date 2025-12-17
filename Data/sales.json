@@ -1,30 +1,3 @@
 [
-  {
-    "Id": "3c6cbad0-b33f-472f-a620-39c789b56d0f",
-    "MedicineId": "26bd8f8e-4fbc-4731-8408-40c7dd2d4077",
-    "Quantity": 22,
-    "Price": 343,
-    "SoldAt": "2025-12-11T17:13:02.5077494Z"
-  },
-  {
-    "Id": "60dca8d9-d651-4bca-907e-0addc484d2ef",
-    "MedicineId": "e1745a9d-caf7-4752-8d42-93fc87fbb12f",
-    "Quantity": 122,
-    "Price": 12312,
-    "SoldAt": "2025-12-11T17:30:24.6164198Z"
-  },
-  {
-    "Id": "9f5a98bb-1410-4f58-9a62-d17684a0c24f",
-    "MedicineId": "e1745a9d-caf7-4752-8d42-93fc87fbb12f",
-    "Quantity": 1,
-    "Price": 12312,
-    "SoldAt": "2025-12-11T17:34:32.3379048Z"
-  },
-  {
-    "Id": "48f618ff-3e04-4b5e-97ee-94305e4e2676",
-    "MedicineId": "26bd8f8e-4fbc-4731-8408-40c7dd2d4077",
-    "Quantity": 1,
-    "Price": 343,
-    "SoldAt": "2025-12-17T05:45:54.0386311Z"
-  }
+ 
 ]

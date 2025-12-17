@@ -7,9 +7,6 @@ Summary of changes and features
 -------------------------------
 - Project now targets `.NET 8.0`.
 - Client and server-side validation for all medicine fields (FullName, Notes, ExpiryDate, Quantity, Price, Brand).
-- Frontend grid with color coding:
-   - Red: expiry date less than 30 days from today (takes precedence).
-   - Yellow: quantity in stock less than 10.
 - The app seeds a `Test Medicine` if the data file is missing or corrupted so the UI works immediately.
 - `/health` endpoint added and JSON serialization configured to camelCase to match the frontend.
 
