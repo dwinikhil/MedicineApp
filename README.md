@@ -1,47 +1,6 @@
 ABC Pharmacy - Single Page Application + .NET Minimal Web API
 ============================================================
 
-This project implements the requirements from the provided brief. See original brief: fileciteturn0file0
-
-Contents
---------
-- Program.cs         : Minimal API + simple JSON-backed store.
-- MedicineApp.csproj : .NET project file (target .NET 7.0)
-- Data/medicines.json : JSON data store (sample data).
-- wwwroot/index.html, app.js, styles.css : Single-page frontend (vanilla JavaScript).
-- README.md          : This file.
-
-Prerequisites
--------------
-- .NET 7 SDK installed. (If you have .NET 6 only, change TargetFramework in the .csproj.)
-- A terminal / command prompt.
-
-How to run
-----------
-1. Unzip the project folder.
-2. From project root (where the .csproj is), run:
-
-   dotnet restore
-   dotnet run
-
-3. By default the app will print a URL such as https://localhost:5001 or http://localhost:5000.
-   Open that URL in your browser. The SPA is served from the same host and calls the API endpoints under /api.
-
-Endpoints
----------
-- GET  /api/medicines            => list all medicines. Supports optional query string 'q' for name search.
-- GET  /api/medicines/{id}     => get single medicine
-- POST /api/medicines            => add a medicine (JSON body)
-- POST /api/sales                => record a sale { medicineId: guid, quantity: number } — reduces quantity and persists.
-
-Data storage
-------------
-Data is stored as JSON in the Data/medicines.json file and Data/sales.json for sales. The API reads/writes these files.
-
-Notes & assumptions
-ABC Pharmacy - Single Page Application + .NET Minimal Web API
-============================================================
-
 This project is a small SPA (vanilla JavaScript) coupled with a .NET minimal Web API that stores data in JSON files for simplicity.
 
 Summary of changes and features
@@ -94,64 +53,78 @@ Notes
 API endpoints
 -------------
 - `GET  /api/medicines`            — list all medicines. Supports optional `?q=` for name search.
-- `GET  /api/medicines/{id}`       — get a single medicine.
-- `POST /api/medicines`            — add a medicine (JSON body). Server validates fields.
-- `POST /api/sales`                — record a sale `{ medicineId: guid, quantity: number }` — reduces quantity and persists to `Data/sales.json`.
-- `GET  /health`                   — health check: returns `{ status: "ok" }`.
+# ABC Pharmacy — MedicineApp
 
-Example requests (PowerShell)
-----------------------------
-- List medicines:
+A small Single-Page Application (Vanilla JavaScript) served by a .NET minimal Web API. The app stores data as JSON files in the `Data/` folder for simplicity — this repository is a demo and intended for local development and learning.
 
-```powershell
-Invoke-RestMethod -Uri 'http://localhost:5000/api/medicines' -UseBasicParsing | ConvertTo-Json -Depth 5
+**What this repo contains:**
+- `Program.cs` — minimal Web API and server logic
+- `MedicineApp.csproj` — project file (targets .NET 8.0)
+- `wwwroot/` — frontend static files (`index.html`, `app.js`, `styles.css`)
+- `Data/` — JSON data files used by the API (`medicines.json`, `sales.json`)
+
+**Audience:** developers who want to run, inspect, or extend a simple SPA + API demo.
+
+**High-level features:**
+- Searchable medicine list, add medicine, record sales
+- Simple JSON-backed persistence (no database)
+- Frontend written in plain (vanilla) JavaScript
+
+**Important note:** the project targets `.NET 8.0`. Use .NET 8 SDK to build and run.
+
+**Supported platforms:** Windows, macOS, Linux (where .NET 8 SDK is available).
+
+**Quick table of contents**
+- **Prerequisites**
+- **Quick start (run)**
+- **Development commands**
+- **API endpoints**
+- **Data files**
+- **Troubleshooting & tips**
+
+**Prerequisites**
+- .NET SDK 8.0 or later. Verify installed SDKs:
+
+```
+dotnet --list-sdks
 ```
 
-- Add a medicine:
+- No Node.js / npm is required to run the app. The frontend is static files served from `wwwroot/`.
+
+**Quick start — run locally**
+1. Open a terminal in the project root (where `MedicineApp.csproj` is located).
+2. Restore, build and run:
 
 ```powershell
-$body = @{ fullName = 'Unit Test Med'; notes = 'notes'; expiryDate = '2026-12-01'; quantity = 10; price = 5.25; brand = 'UnitBrand' } | ConvertTo-Json
-Invoke-RestMethod -Uri 'http://localhost:5000/api/medicines' -Method Post -Body $body -ContentType 'application/json'
+dotnet restore
+dotnet build
+dotnet run
 ```
 
-- Record a sale:
+3. The server will print a local URL (for example `http://localhost:5000` or `https://localhost:5001`). Open that URL in your browser.
 
-```powershell
-$sale = @{ medicineId = '<guid-from-list>'; quantity = 1 } | ConvertTo-Json
-Invoke-RestMethod -Uri 'http://localhost:5000/api/sales' -Method Post -Body $sale -ContentType 'application/json'
-```
+**Useful development commands**
+- Restore packages: `dotnet restore`
+- Build: `dotnet build`
+- Run: `dotnet run`
+- List NuGet packages: `dotnet list package`
+- Add a package: `dotnet add package <PackageName>`
+- Check for outdated packages: `dotnet list package --outdated`
 
-Frontend behavior
------------------
-- Grid columns: Name, Expiry, Qty, Price (2 decimals), Brand, Action.
-- Color rules: Red = expiry < 30 days; Yellow = quantity < 10. Red takes precedence.
-- Search box calls `GET /api/medicines?q=term` as you type.
-- Add-medicine modal performs client-side validation for all fields and shows inline errors.
+**API endpoints**
+All endpoints are prefixed with `/api` unless noted.
 
-Data persistence
-----------------
-- `Data/medicines.json` stores medicines (cleaned/seeded on startup if missing/corrupt).
-- `Data/sales.json` appends sales records.
+- `GET  /api/medicines` — list all medicines. Optional query `?q=` filters by name.
+- `GET  /api/medicines/{id}` — get a single medicine by id.
+- `POST /api/medicines` — add a medicine (JSON body). Validates required fields.
+- `POST /api/sales` — record a sale `{ medicineId: string, quantity: number }`. Reduces quantity and appends a record to `Data/sales.json`.
+- `GET  /health` — basic health check (returns JSON `{ status: "ok" }`).
 
-- Troubleshooting
-- ---------------
-- This project requires **.NET 8.0**.
-- If you do not have .NET 8 installed, download and install the .NET 8 SDK from https://dotnet.microsoft.com/download and then rebuild.
-- Do not downgrade the project to an earlier runtime — the code and project are built and tested against .NET 8.
-- If `dotnet build` complains the DLL is locked, stop any running instance of the app before building:
+**Data files**
+- `Data/medicines.json` — the medicines store. The API reads and writes this file.
+- `Data/sales.json` — appended sales log (created when the first sale is recorded).
 
-```powershell
-Get-Process -Name dotnet -ErrorAction SilentlyContinue | Where-Object { $_.Path -like '*MedicineApp*' } | Stop-Process -Force
-```
+The files are plain JSON. For production use, replace this with a proper database.
 
-- To see detailed exceptions, run the app in Development mode:
-
-```powershell
-$env:ASPNETCORE_ENVIRONMENT='Development'
-dotnet run --project 'c:\Users\HP\Downloads\MedicineApp\MedicineApp.csproj'
-```
-
-Security & production notes
---------------------------
-- This demo uses JSON files for storage. Use a database for production workloads.
-- No authentication or access control is implemented. Add appropriate security before exposing publicly.
+**Frontend**
+- The SPA lives in `wwwroot/`. Open [wwwroot/index.html](wwwroot/index.html) in a browser when the server is running.

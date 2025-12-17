@@ -1,32 +1,12 @@
 [
-  {
-    "Id": "26bd8f8e-4fbc-4731-8408-40c7dd2d4077",
-    "FullName": "a",
-    "Notes": "dsd",
-    "ExpiryDate": "2000-01-01T00:00:00",
-    "Quantity": 10,
-    "Price": 343,
-    "Brand": "test",
-    "CreatedAt": "2025-12-11T17:12:46.6887037Z"
-  },
-  {
-    "Id": "e1745a9d-caf7-4752-8d42-93fc87fbb12f",
-    "FullName": "asdds",
-    "Notes": "asdasdasd",
-    "ExpiryDate": "2025-12-13T00:00:00",
-    "Quantity": 0,
-    "Price": 12312,
-    "Brand": "qweqwe",
-    "CreatedAt": "2025-12-11T17:29:53.969597Z"
-  },
-  {
+   {
     "Id": "eae53123-5471-47a9-a093-471ce807c45b",
-    "FullName": "wer",
-    "Notes": "wer",
+    "FullName": "Test Medicine",
+    "Notes": "Testing medicine entry",
     "ExpiryDate": "2025-12-12T00:00:00",
-    "Quantity": 3434,
-    "Price": 1312123,
-    "Brand": "dsfs",
+    "Quantity": 123,
+    "Price": 999,
+    "Brand": "XYZ Pharma",
     "CreatedAt": "2025-12-11T17:41:12.5846948Z"
   }
 ]
